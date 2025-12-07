@@ -1,0 +1,66 @@
+<%- include('../partials/header', { pageTitle: 'Create Event (Admin)' }) %>
+<div class="layout">
+  <%- include('../partials/sidebar-admin', { active: 'events' }) %>
+  <section class="layout-main">
+    <h1>Create New Event</h1>
+    <p class="muted">
+      Fill in the details below and assign the event to a manager.
+    </p>
+
+    <% if (error) { %>
+      <div class="alert error"><%= error %></div>
+    <% } %>
+
+    <form method="POST" action="/admin/events" class="form grid-2">
+      <div class="full-row">
+        <label class="form-label">Event Title</label>
+        <input type="text" name="title" class="input" placeholder="e.g. Annual Science Fair" />
+      </div>
+
+      <div class="full-row">
+        <label class="form-label">Description</label>
+        <textarea name="description" class="input textarea" placeholder="Describe the event..."></textarea>
+      </div>
+
+      <div>
+        <label class="form-label">Date</label>
+        <input type="text" name="date" class="input" placeholder="e.g. 2025-12-05 or Dec 5, 2025" />
+      </div>
+
+      <div>
+        <label class="form-label">Time</label>
+        <input type="text" name="time" class="input" placeholder="e.g. 10:00:00 or 10:00 AM" />
+      </div>
+
+      <div>
+        <label class="form-label">Location</label>
+        <input type="text" name="location" class="input" placeholder="e.g. Main Auditorium" />
+      </div>
+
+      <div>
+        <label class="form-label">Max Participants</label>
+        <input type="number" name="capacity" class="input" placeholder="50" />
+      </div>
+
+      <div>
+        <label class="form-label">Assign to Manager</label>
+        <select name="managerId" class="input">
+          <option value="">-- Select Manager --</option>
+          <% managers.forEach(m => { %>
+            <option value="<%= m.id %>"><%= m.id %> - <%= m.name %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="full-row">
+        <label class="form-label">Rules &amp; Requirements</label>
+        <textarea name="rules" class="input textarea" placeholder="e.g. Student ID required, no food allowed"></textarea>
+      </div>
+
+      <div class="full-row align-end">
+        <button type="submit" class="primary-btn">Create Event</button>
+      </div>
+    </form>
+  </section>
+</div>
+<%- include('../partials/footer') %>

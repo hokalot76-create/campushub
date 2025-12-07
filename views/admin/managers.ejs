@@ -1,0 +1,55 @@
+<%- include('../partials/header', { pageTitle: 'Manage Managers' }) %>
+<div class="layout">
+  <%- include('../partials/sidebar-admin', { active: 'managers' }) %>
+  <section class="layout-main">
+    <h1>Manage Managers</h1>
+    <p class="muted">Create and oversee event managers</p>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+      <div class="alert error"><%= error %></div>
+    <% } %>
+
+    <% if (createdManager) { %>
+      <div class="alert success">
+        Manager created. ID: <strong><%= createdManager.id %></strong>,
+        Password: <strong><%= createdManager.password %></strong>
+      </div>
+    <% } %>
+
+    <form method="POST" action="/admin/managers" class="form grid-2">
+      <div>
+        <label class="form-label">Full Name</label>
+        <input type="text" name="name" class="input" placeholder="Prof. David Miller" />
+      </div>
+      <div>
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="input" placeholder="david@university.edu" />
+      </div>
+      <div class="align-end">
+        <button type="submit" class="primary-btn full">Create New Manager</button>
+      </div>
+    </form>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Manager ID</th>
+          <th>Email</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% managers.forEach(m => { %>
+          <tr>
+            <td><%= m.name %></td>
+            <td><%= m.id %></td>
+            <td><%= m.email %></td>
+            <td><span class="pill success">Active</span></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </section>
+</div>
+<%- include('../partials/footer') %>

@@ -1,0 +1,31 @@
+<%- include('../partials/header', { pageTitle: 'Admin Overview' }) %>
+<div class="layout">
+  <%- include('../partials/sidebar-admin', { active: 'overview' }) %>
+  <section class="layout-main">
+    <h1>Admin Overview</h1>
+    <p class="muted">System-wide statistics and management</p>
+    <div class="stats-grid">
+      <div class="card stat-card">
+        <div class="stat-label">Total Students</div>
+        <div class="stat-value"><%= totalStudents %></div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-label">Managers</div>
+        <div class="stat-value"><%= totalManagers %></div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-label">Total Events</div>
+        <div class="stat-value"><%= totalEvents %></div>
+      </div>
+      <div class="card stat-card danger">
+        <div class="stat-label">Blocked Students</div>
+        <div class="stat-value"><%= blockedStudents %></div>
+      </div>
+    </div>
+    <div class="system-status card">
+      <span class="status-dot"></span>
+      <span>All systems operational. Database connected.</span>
+    </div>
+  </section>
+</div>
+<%- include('../partials/footer') %>

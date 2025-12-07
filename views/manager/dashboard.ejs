@@ -1,0 +1,61 @@
+<%- include('../partials/header', { pageTitle: 'Manager Dashboard' }) %>
+<div class="layout">
+  <%- include('../partials/sidebar-manager', { active: 'dashboard' }) %>
+
+  <section class="layout-main">
+    <div class="page-header">
+      <div>
+        <h1>Manager Dashboard</h1>
+        <p class="muted">Manage and monitor your events</p>
+      </div>
+
+      <a href="/manager/events/new" class="primary-btn">Create Event</a>
+    </div>
+
+    <div class="page-inner">
+      <div class="card">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Event Name</th>
+              <th>Date</th>
+              <th>Capacity</th>
+              <th>Registered</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% events.forEach(e => { 
+                 const isFull = e.registeredCount >= e.capacity;
+            %>
+              <tr>
+                <td><%= e.title %></td>
+                <td><%= e.date %></td>
+                <td><%= e.capacity %></td>
+                <td><%= e.registeredCount %></td>
+                <td>
+                  <% if (isFull) { %>
+                    <span class="pill danger">full</span>
+                  <% } else { %>
+                    <span class="pill">upcoming</span>
+                  <% } %>
+                </td>
+                <td class="table-actions">
+  <a href="/manager/events/<%= e.id %>/attendees" class="icon-btn" title="View attendees">👁</a>
+
+  <a href="/manager/events/<%= e.id %>/edit" class="icon-btn" title="Edit event">✏️</a>
+
+  <form method="POST" action="/manager/events/<%= e.id %>/delete" class="inline">
+    <button class="icon-btn danger" title="Delete">🗑</button>
+  </form>
+</td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+<%- include('../partials/footer') %>

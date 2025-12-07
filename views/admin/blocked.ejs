@@ -1,0 +1,37 @@
+<%- include('../partials/header', { pageTitle: 'Blocked Students' }) %>
+  <div class="layout">
+    <%- include('../partials/sidebar-admin', { active: 'blocked' }) %>
+      <section class="layout-main">
+        <h1>Blocked Students</h1>
+        <p class="muted">Students who cannot register for events</p>
+        <% if (!students.length) { %>
+          <p class="muted">No blocked students.</p>
+          <% } else { %>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Student ID</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% students.forEach(s=> { %>
+                  <tr>
+                    <td>
+                      <%= s.fullName %>
+                    </td>
+                    <td>
+                      <%= s.studentId %>
+                    </td>
+                    <td>
+                      <%= s.email %>
+                    </td>
+                  </tr>
+                  <% }) %>
+              </tbody>
+            </table>
+            <% } %>
+      </section>
+  </div>
+  <%- include('../partials/footer') %>

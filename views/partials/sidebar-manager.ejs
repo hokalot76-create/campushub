@@ -1,0 +1,14 @@
+<aside class="sidebar">
+  <div class="sidebar-header">CampusHub</div>
+  <nav class="sidebar-nav">
+    <a href="/manager" class="sidebar-link<%= active === 'dashboard' ? ' active' : '' %>">Dashboard</a>
+    <a href="/manager/events/new" class="sidebar-link<%= active === 'create' ? ' active' : '' %>">Create Event</a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="avatar-circle">M</div>
+    <div class="sidebar-user">
+      <div class="name">Manager</div>
+      <div class="meta"><%= currentUser ? currentUser.id : '' %></div>
+    </div>
+  </div>
+</aside>

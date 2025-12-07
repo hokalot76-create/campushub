@@ -1,0 +1,47 @@
+<%- include('../partials/header', { pageTitle: 'Manage Students' }) %>
+<div class="layout">
+  <%- include('../partials/sidebar-admin', { active: 'students' }) %>
+  <section class="layout-main">
+    <h1>Manage Students</h1>
+    <p class="muted">View and manage student access</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Student ID</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% students.forEach(s => { %>
+          <tr>
+            <td><%= s.first_name %> <%= s.last_name %></td>
+            <td><%= s.id %></td>
+            <td><%= s.email %></td>
+            <td>
+              <% if (blockedIds.includes(String(s.id))) { %>
+                <span class="pill danger">Blocked</span>
+              <% } else { %>
+                <span class="pill success">Active</span>
+              <% } %>
+            </td>
+            <td>
+              <% if (blockedIds.includes(String(s.id))) { %>
+                <form method="POST" action="/admin/students/<%= s.id %>/unblock" class="inline">
+                  <button class="btn small">Unblock</button>
+                </form>
+              <% } else { %>
+                <form method="POST" action="/admin/students/<%= s.id %>/block" class="inline">
+                  <button class="btn small danger">Block</button>
+                </form>
+              <% } %>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </section>
+</div>
+<%- include('../partials/footer') %>

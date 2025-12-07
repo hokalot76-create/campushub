@@ -1,0 +1,37 @@
+<%- include('../partials/header', { pageTitle: 'My Registrations' }) %>
+  <div class="layout">
+    <%- include('../partials/sidebar-student', { active: 'registrations' }) %>
+      <section class="layout-main">
+        <h1>My Registrations</h1>
+        <p class="muted">Manage your upcoming events</p>
+        <% if (!events.length) { %>
+          <div class="empty-state card">
+            This view would list your registered events similar to the dashboard cards.<br />
+            <a href="/student">Back to all events</a>
+          </div>
+          <% } else { %>
+            <div class="events-grid">
+              <% events.forEach(e=> { %>
+                <div class="card event-card">
+                  <h3 class="event-title">
+                    <%= e.title %>
+                  </h3>
+                  <ul class="event-meta">
+                    <li>📅 <%= e.date %> • <%= e.time %>
+                    </li>
+                    <li>📍 <%= e.location %>
+                    </li>
+                  </ul>
+                  <div class="event-actions">
+                    <form method="POST" action="/student/events/<%= e.id %>/cancel">
+                      <input type="hidden" name="from" value="registrations">
+                      <button class="btn danger full">Cancel Registration</button>
+                    </form>
+                  </div>
+                </div>
+                <% }) %>
+            </div>
+            <% } %>
+      </section>
+  </div>
+  <%- include('../partials/footer') %>

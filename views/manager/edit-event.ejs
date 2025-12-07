@@ -1,0 +1,97 @@
+<%- include('../partials/header', { pageTitle: 'Edit Event' }) %>
+<div class="layout">
+  <%- include('../partials/sidebar-manager', { active: 'dashboard' }) %>
+
+  <section class="layout-main">
+    <h1>Edit Event</h1>
+    <p class="muted">Update the details of your event.</p>
+
+    <% if (error) { %>
+      <div class="alert error"><%= error %></div>
+    <% } %>
+
+    <% if (!event) { %>
+      <p class="muted">Event not found.</p>
+    <% } else { %>
+      <form class="form grid-2" method="POST" action="/manager/events/<%= event.id %>/edit">
+        <div class="full-row">
+          <label class="form-label">Title</label>
+          <input
+            type="text"
+            name="title"
+            class="input"
+            value="<%= event.title %>"
+            required
+          />
+        </div>
+
+        <div class="full-row">
+          <label class="form-label">Description</label>
+          <textarea
+            name="description"
+            class="textarea"
+          ><%= event.description %></textarea>
+        </div>
+
+        <div>
+          <label class="form-label">Date</label>
+          <input
+            type="text"
+            name="date"
+            class="input"
+            value="<%= event.date %>"
+            required
+          />
+        </div>
+
+        <div>
+          <label class="form-label">Time</label>
+          <input
+            type="text"
+            name="time"
+            class="input"
+            value="<%= event.time %>"
+            required
+          />
+        </div>
+
+        <div>
+          <label class="form-label">Location</label>
+          <input
+            type="text"
+            name="location"
+            class="input"
+            value="<%= event.location %>"
+            required
+          />
+        </div>
+
+        <div>
+          <label class="form-label">Capacity</label>
+          <input
+            type="number"
+            name="capacity"
+            class="input"
+            min="1"
+            value="<%= event.capacity %>"
+            required
+          />
+        </div>
+
+        <div class="full-row">
+          <label class="form-label">Rules</label>
+          <textarea
+            name="rules"
+            class="textarea"
+          ><%= event.rules %></textarea>
+        </div>
+
+        <div class="full-row">
+          <button class="primary-btn">Save Changes</button>
+          <a href="/manager" class="link-btn" style="margin-left: 8px;">Cancel</a>
+        </div>
+      </form>
+    <% } %>
+  </section>
+</div>
+<%- include('../partials/footer') %>

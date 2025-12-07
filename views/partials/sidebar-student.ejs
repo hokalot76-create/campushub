@@ -1,0 +1,14 @@
+<aside class="sidebar">
+  <div class="sidebar-header">CampusHub</div>
+  <nav class="sidebar-nav">
+    <a href="/student" class="sidebar-link<%= active === 'events' ? ' active' : '' %>">Available Events</a>
+    <a href="/student/registrations" class="sidebar-link<%= active === 'registrations' ? ' active' : '' %>">My Registrations</a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="avatar-circle">S</div>
+    <div class="sidebar-user">
+      <div class="name"><%= currentUser ? currentUser.name : '' %></div>
+      <div class="meta">Student • <%= currentUser ? currentUser.id : '' %></div>
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,53 @@
+<%- include('partials/header', { pageTitle: 'Home' }) %>
+  <section class="landing-hero">
+    <div class="hero-left">
+      <div class="pill">New Academic Year 2025</div>
+      <h1 class="hero-title">
+        University Event Management<br />
+        <span class="accent">Simplified.</span>
+      </h1>
+      <p class="hero-subtitle">
+        One platform to manage all university events.<br />
+        Connect students, event managers, and administrators seamlessly.
+      </p>
+      <div class="hero-actions">
+        <a href="/student/signup" class="primary-btn">Get Started</a>
+        <a href="/login" class="secondary-btn">Already have an account?</a>
+      </div>
+    </div>
+
+    <div class="hero-right card hero-card">
+      <div class="hero-image-box">
+        <img src="/images/campus-life.png" alt="Campus Life" class="hero-image">
+      </div>
+      <div class="hero-caption">
+        <h3>Experience Campus Life</h3>
+        <p>Join thousands of students today</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-section">
+    <h2 class="section-title center">Tailored for Everyone</h2>
+    <p class="section-subtitle center">
+      CampusHub provides specific tools for every role in the university ecosystem.
+    </p>
+    <div class="roles-grid">
+      <div class="card role-card">
+        <div class="icon-circle">👤</div>
+        <h3>Students</h3>
+        <p>Browse events, register with one click, and track your schedule.</p>
+      </div>
+      <div class="card role-card">
+        <div class="icon-circle">📅</div>
+        <h3>Event Managers</h3>
+        <p>Create events, manage capacity, and view attendee lists.</p>
+      </div>
+      <div class="card role-card">
+        <div class="icon-circle">🛡️</div>
+        <h3>Admins</h3>
+        <p>Full oversight of the system and user management.</p>
+      </div>
+    </div>
+  </section>
+  <%- include('partials/footer') %>

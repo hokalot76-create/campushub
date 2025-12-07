@@ -1,0 +1,17 @@
+<aside class="sidebar">
+  <div class="sidebar-header">CampusHub</div>
+  <nav class="sidebar-nav">
+    <a href="/admin" class="sidebar-link<%= active === 'overview' ? ' active' : '' %>">Overview</a>
+    <a href="/admin/students" class="sidebar-link<%= active === 'students' ? ' active' : '' %>">Manage Students</a>
+    <a href="/admin/managers" class="sidebar-link<%= active === 'managers' ? ' active' : '' %>">Manage Managers</a>
+    <a href="/admin/events" class="sidebar-link<%= active === 'events' ? ' active' : '' %>">All Events</a>
+    <a href="/admin/blocked" class="sidebar-link<%= active === 'blocked' ? ' active' : '' %>">Blocked Students</a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="avatar-circle">A</div>
+    <div class="sidebar-user">
+      <div class="name">Admin System</div>
+      <div class="meta">Admin • A-001</div>
+    </div>
+  </div>
+</aside>

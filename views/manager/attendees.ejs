@@ -1,0 +1,38 @@
+<%- include('../partials/header', { pageTitle: 'Event Attendees' }) %>
+<div class="layout">
+  <%- include('../partials/sidebar-manager', { active: 'dashboard' }) %>
+  <section class="layout-main">
+    <h1><%= event.title %> – Attendees</h1>
+    <p class="muted">Manage student registrations for this event</p>
+    <% if (!attendees.length) { %>
+      <p class="muted">No students registered yet.</p>
+    <% } else { %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Student ID</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% attendees.forEach(a => { %>
+            <tr>
+              <td><%= a.firstName %> <%= a.lastName %></td>
+              <td><%= a.id %></td>
+              <td><%= a.email %></td>
+              <td>
+                <form method="POST" action="/manager/events/<%= event.id %>/remove-student/<%= a.id %>" class="inline">
+                  <button class="btn small danger">Remove</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+    <a href="/manager" class="link-back">← Back to events</a>
+  </section>
+</div>
+<%- include('../partials/footer') %>

@@ -1,0 +1,47 @@
+<%- include('../partials/header', { pageTitle: 'All Events' }) %>
+<div class="layout">
+  <%- include('../partials/sidebar-admin', { active: 'events' }) %>
+
+  <section class="layout-main">
+    <div class="page-header">
+      <div>
+        <h1>All Events</h1>
+        <p class="muted">Overview of all events created in the system.</p>
+      </div>
+
+      <a href="/admin/events/new" class="primary-btn">
+        Create Event
+      </a>
+    </div>
+
+    <div class="card">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+            <th>Capacity</th>
+            <th>Registered</th>
+            <th>Manager</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% events.forEach(e => { %>
+            <tr>
+              <td><%= e.title %></td>
+              <td><%= e.date %></td>
+              <td><%= e.time %></td>
+              <td><%= e.location %></td>
+              <td><%= e.capacity %></td>
+              <td><%= e.registeredCount %></td>
+              <td><%= e.managerName || '—' %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+<%- include('../partials/footer') %>

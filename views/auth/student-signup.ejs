@@ -1,0 +1,43 @@
+<%- include('../partials/header', { pageTitle: 'Student Sign Up' }) %>
+<div class="auth-wrapper">
+  <div class="card auth-card">
+    <div class="auth-logo">C</div>
+    <h2 class="auth-title">Create Student Account</h2>
+    <p class="auth-subtitle">Join CampusHub to manage your university events</p>
+    <% if (error) { %>
+      <div class="alert error"><%= error %></div>
+    <% } %>
+    <form method="POST" action="/student/signup" class="form grid-2">
+      <div>
+        <label class="form-label">First Name</label>
+        <input type="text" name="firstName" placeholder="John" class="input" />
+      </div>
+      <div>
+        <label class="form-label">Last Name</label>
+        <input type="text" name="lastName" placeholder="Doe" class="input" />
+      </div>
+      <div class="full-row">
+        <label class="form-label">Email Address</label>
+        <input type="email" name="email" placeholder="john.doe@university.edu" class="input" />
+      </div>
+      <div>
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="input" />
+      </div>
+      <div>
+        <label class="form-label">Confirm Password</label>
+        <input type="password" name="confirmPassword" class="input" />
+      </div>
+      <div class="full-row note-box">
+        Note: Your student ID is generated automatically and will appear in your account after registration.
+      </div>
+      <div class="full-row">
+        <button type="submit" class="primary-btn full">Create Account</button>
+      </div>
+    </form>
+    <p class="auth-footer">
+      Already have an account? <a href="/login">Log in</a>
+    </p>
+  </div>
+</div>
+<%- include('../partials/footer') %>
